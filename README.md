@@ -4,6 +4,12 @@ A React component library implementing the [GOV.UK Design System](https://design
 
 > **Note:** This library is NOT maintained, endorsed, or supported by the UK Government. It is a community implementation of the GOV.UK Design System patterns.
 
+
+## Components
+
+View the full documentation and component examples in [Storybook](https://projectsbyif.github.io/gds-react/).
+
+
 ## Installation
 
 Install using your preferred package manager.
@@ -38,11 +44,7 @@ function App() {
 
 If you are approved to use GOV.UK assets, follow [this guide](https://frontend.design-system.service.gov.uk/import-font-and-images-assets/) to set up font and image assets.
 
-## Components
-
-View the full documentation and component examples in [Storybook](https://projectsbyif.github.io/gds-react/).
-
-## Font Usage
+## GDS Transport Font Usage
 
 The GDS Transport font is only licensed for use on gov.uk subdomains. If you're not building for gov.uk, the library will fall back to Arial.
 
