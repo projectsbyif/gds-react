@@ -10,7 +10,7 @@ export interface ServiceNavigationItem {
 }
 
 export interface ServiceNavigationProps {
-  serviceName?: string
+  serviceName?: string | undefined
   serviceUrl?: string
   navigationItems?: ServiceNavigationItem[]
   navigationLabel?: string

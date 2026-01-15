@@ -6,8 +6,11 @@ A React component library implementing the [GOV.UK Design System](https://design
 
 ## Installation
 
+Install using your preferred package manager.
 ```bash
 pnpm add @projectsbyif/gds-react govuk-frontend
+npm i @projectsbyif/gds-react govuk-frontend
+yarn add @projectsbyif/gds-react govuk-frontend
 ```
 
 ## Requirements
@@ -35,24 +38,6 @@ function App() {
 If you are approved to use GOV.UK assets, follow [this guide](https://frontend.design-system.service.gov.uk/import-font-and-images-assets/) to set up font and image assets.
 
 ## Components
-
-This library provides 42 components:
-
-**Layout & Structure:** Accordion, Breadcrumbs, Footer, Header, Layout, PageTemplate, Tabs
-
-**Typography:** Heading, Paragraph, List, InsetText, WarningText, Details, Panel
-
-**Navigation:** BackLink, Link, Pagination, ServiceNavigation, SkipLink
-
-**Forms:** Button, ButtonGroup, CharacterCount, Checkboxes, DateInput, Fieldset, FileUpload, PasswordInput, Radios, Select, Textarea, TextInput
-
-**Feedback:** CookieBanner, ErrorSummary, NotificationBanner, PhaseBanner, Tag
-
-**Data Display:** SummaryList, Table, TaskList
-
-**Utilities:** ExitThisPage, SectionBreak, GDSReactProvider
-
-## Documentation
 
 View the full documentation and component examples in [Storybook](https://projectsbyif.github.io/gds-react/).
 

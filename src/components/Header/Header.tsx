@@ -1,7 +1,7 @@
 import { Link } from "../Link/Link.js"
 
 export interface HeaderProps {
-  productName?: string
+  productName?: string | undefined
   homepageUrl?: string
   fullWidthBorder?: boolean
   className?: string

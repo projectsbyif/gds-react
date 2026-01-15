@@ -23,7 +23,7 @@ export interface CookieBannerMessage {
 export interface CookieBannerProps {
   serviceName: string
   messages: CookieBannerMessage[]
-  ariaLabel?: string
+  ariaLabel?: string | undefined
   className?: string
 }
 

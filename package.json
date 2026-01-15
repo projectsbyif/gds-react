@@ -1,7 +1,14 @@
 {
-  "name": "gds-react",
+  "name": "@projectsbyif/gds-react",
   "version": "1.0.0",
-  "description": "",
+  "description": "React components for GOV.UK Design System",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/projectsbyif/gds-react.git"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
   "main": "dist/index.js",
   "scripts": {
     "test": "vitest",
@@ -14,7 +21,7 @@
     "changeset": "changeset"
   },
   "keywords": [],
-  "author": "",
+  "author": "Matthew Gill",
   "license": "ISC",
   "packageManager": "pnpm@10.27.0",
   "type": "module",
