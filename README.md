@@ -18,6 +18,7 @@ yarn add @projectsbyif/gds-react govuk-frontend
 - React 19+
 - react-dom 19+
 - govuk-frontend 5+
+- `sass` or `sass-embedded` (for your bundler to process GOV.UK Frontend styles)
 
 ## Quick Start
 

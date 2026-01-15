@@ -11,7 +11,7 @@ import type { GDSReactConfig, GDSReactProviderProps } from "./types.js";
 
 // Import GOV.UK Frontend styles
 // @ts-ignore: Ignore missing types for govuk-frontend
-import "govuk-frontend/dist/govuk/govuk-frontend.min.css";
+import 'govuk-frontend/dist/govuk/index.scss'
 
 const GDSReactContext = createContext<GDSReactConfig | null>(null);
 
