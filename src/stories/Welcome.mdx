@@ -4,74 +4,108 @@ import { Meta } from '@storybook/addon-docs/blocks';
 
 # GDSReact
 
-This component library will give you everything you need to get started to use this implementation of the [Government Design System](https://design-system.service.gov.uk/get-started/) in your React projects.
+This component library provides everything you need to use the [GOV.UK Design System](https://design-system.service.gov.uk/) in your React projects.
 
-**It's important to read this guide first as it will provide instructions to get you started and help troubleshoot common issues.**
+**Read this guide first for setup instructions and troubleshooting.**
+
+## Important Notice
 
 ### No Government Affiliation
 
-Firstly, this library is NOT maintained, endorsed or supported by the UK Government in any way. It is a community implementation of the designs and patterns which the UK Government GDS team have built.
-While every care has been taken to ensure this component library is as faithful as possible to the original design intentions of GDS, slight deviations may occur.
+This library is NOT maintained, endorsed, or supported by the UK Government. It is a community implementation of the designs and patterns created by the GOV.UK Design System team. While every care has been taken to remain faithful to the original design intentions, slight deviations may occur.
 
-### Use of GDS Transport font
+### GDS Transport Font
 
-The font most commonly associated with Government websites is called [GDS Transport](https://designnotes.blog.gov.uk/2015/03/11/can-i-use-the-gov-uk-fonts/). **It is only to be used on gov.uk sub-domains.**
-Fonts are loaded via the `assets` prop in the `GDSReactProvider` component. If you are _not_ building for a gov.uk site, set this to an arbitrary value and Arial will be used instead.
+The [GDS Transport](https://designnotes.blog.gov.uk/2015/03/11/can-i-use-the-gov-uk-fonts/) font is **only licensed for use on gov.uk subdomains**. If you're not building for gov.uk, the library will fall back to Arial.
 
-[You can read more about GDS Transport usage on the GDS page](https://design-system.service.gov.uk/styles/typeface/). Other worthwhile reading is the [Making your service look like GOV.UK](https://www.gov.uk/service-manual/design/making-your-service-look-like-govuk#if-your-service-isnt-on-govuk) page which is part of the [GOV.UK Service manual](https://www.gov.uk/service-manual)
+For more information, see:
+- [GDS Transport usage guidelines](https://design-system.service.gov.uk/styles/typeface/)
+- [Making your service look like GOV.UK](https://www.gov.uk/service-manual/design/making-your-service-look-like-govuk#if-your-service-isnt-on-govuk)
 
-## Getting started
+## Getting Started
 
-### Prerequisites
-- A React/Typescript app - [you can bootstrap one quickly](https://react.dev/learn/creating-a-react-app) with `npx create-next-app@latest`
-- [GOV.UK Frontend](https://github.com/alphagov/govuk-frontend): `pnpm add govuk-frontend`
-- Install [gds-react](https://github.com/projectsbyif/gds-react) (this package): `pnpm add projectbyif/gds-react`
-- If you are approved to use GOV.UK assets (e.g. the GDS Transport font), follow [this guide to import font and images assets](https://frontend.design-system.service.gov.uk/import-font-and-images-assets/#import-font-and-images-assets). Remember the path you have used as this will be used later, we recommend `<YOUR-SITE-URL>/assets`, although it should be fine to use any other path which is publicly available.
+### Requirements
 
-### Important concepts/components
+- React 19+
+- govuk-frontend 5+
 
-[GDSReactProvider](?path=/docs/core-gdsreactprovider--docs) is the component which ensures that CSS, JavaScript, and optionally Fonts are loaded into your application. *Without mounting this component, no other component will appear correctly.*
+### Installation
 
-#### Usage with a router
+1. **Install govuk-frontend:**
+   ```bash
+   pnpm add govuk-frontend
+   ```
 
-Most React frameworks use a router for links such as [Next JS' Link Component](https://nextjs.org/docs/app/api-reference/components/link) or [React Router](https://reactrouter.com/).
+2. **Install gds-react:**
+   ```bash
+   pnpm add @projectsbyif/gds-react
+   ```
 
-It is possible to pass your router component to the `GDSReactProvider` as a function which returns the component. Implementing it as a function allows you to configure router props based on runtime variables (such as [disabling prefetching](https://nextjs.org/docs/app/api-reference/components/link#prefetch) for certain links).
+3. **Set up assets (if building for gov.uk):**
+   Follow the [guide to import font and image assets](https://frontend.design-system.service.gov.uk/import-font-and-images-assets/). Note the path you use (we recommend `/assets`).
+
+## Usage
+
+### Basic Setup
+
+The [GDSReactProvider](?path=/docs/core-gdsreactprovider--docs) component loads the required CSS, JavaScript, and fonts. **Your app must be wrapped in this component for other components to render correctly.**
 
 ```tsx
 import { GDSReactProvider } from "@projectsbyif/gds-react";
-import Link from 'next/link'
 
 function App() {
- return (
-   <GDSReactProvider linkComponent={({ href, children, ...props }) => (
-       <NextLink
-         href={href}
-         // Don't prefetch certain links (e.g. logout url)
-         prefetch={href?.includes('logout') ? false : undefined}
-         {...props}
-       >
-         {children}
-       </NextLink>
-     )}>
-     {/* All links from this library will now use the NextLink */}
-     <YourApplication />
-   </GDSReactProvider>
- );
+  return (
+    <GDSReactProvider assets="/assets">
+      <YourApplication />
+    </GDSReactProvider>
+  );
+}
+```
+
+### Router Integration
+
+Most React frameworks use a router for navigation, such as [Next.js Link](https://nextjs.org/docs/app/api-reference/components/link) or [React Router](https://reactrouter.com/).
+
+Pass your router component to `GDSReactProvider` via the `linkComponent` prop. Using a function allows you to configure props based on runtime values:
+
+```tsx
+import { GDSReactProvider } from "@projectsbyif/gds-react";
+import Link from 'next/link';
+
+function App() {
+  return (
+    <GDSReactProvider
+      assets="/assets"
+      linkComponent={({ href, children, ...props }) => (
+        <Link
+          href={href}
+          // Disable prefetching for certain links (e.g. logout)
+          prefetch={href?.includes('logout') ? false : undefined}
+          {...props}
+        >
+          {children}
+        </Link>
+      )}
+    >
+      <YourApplication />
+    </GDSReactProvider>
+  );
 }
 ```
 
 ## Troubleshooting
 
-### Problem: Components aren't styled
-- Check you have installed the [govuk-frontend](https://github.com/alphagov/govuk-frontend) package correctly
-- Ensure that your app is wrapped in the [GDSReactProvider](?path=/docs/core-gdsreactprovider--docs)
+### Components aren't styled
 
-### Problem: Fonts aren't loading
-- Ensure you have followed the [instructions to import font and images assets](https://frontend.design-system.service.gov.uk/import-font-and-images-assets/#import-font-and-images-assets) and that the assets are available via the URL `<YOUR-SITE-URL>/assets`. Check the browser console for any errors.
-- Overriding the asset path is not possible at this time
+- Check that [govuk-frontend](https://github.com/alphagov/govuk-frontend) is installed correctly
+- Ensure your app is wrapped in [GDSReactProvider](?path=/docs/core-gdsreactprovider--docs)
 
-### Problem: Links aren't working as expected
+### Fonts aren't loading
 
-- Ensure you have set the `linkComponent` prop within the `GDSReactProvider` component to return the routing component for your specific framework
-- Note: some routers automatically prefetch content when links scroll into the viewport, so you should modify the implementation of `linkComponent` to disable prefetching on logout links
+- Verify you've followed the [asset import guide](https://frontend.design-system.service.gov.uk/import-font-and-images-assets/) and that assets are accessible at your configured URL
+- Check the browser console for errors
+
+### Links aren't working as expected
+
+- Ensure you've set the `linkComponent` prop on `GDSReactProvider`
+- If links prefetch unexpectedly, modify `linkComponent` to disable prefetching on logout links (see example above)
