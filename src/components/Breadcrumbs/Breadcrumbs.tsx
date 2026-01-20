@@ -1,7 +1,6 @@
 import type { ReactNode } from 'react'
 import { Link } from "../Link/Link.js"
 
-// @ts-ignore: Ignore missing types for govuk-frontend
 import 'govuk-frontend/dist/govuk/components/breadcrumbs/_breadcrumbs.scss'
 
 export interface BreadcrumbItem {

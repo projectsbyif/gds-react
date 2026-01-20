@@ -26,21 +26,25 @@ yarn add @projectsbyif/gds-react govuk-frontend
 - govuk-frontend 5+
 - `sass` or `sass-embedded` (for your bundler to process GOV.UK Frontend styles)
 
-## Quick Start
+## Setup
 
-Wrap your application with `GDSReactProvider`:
+Components load GOV.UK Frontend styles and JavaScript automatically. For styling to work correctly, add these CSS classes to your HTML document:
 
-```tsx
-import { GDSReactProvider } from "@projectsbyif/gds-react";
-
-function App() {
-  return (
-    <GDSReactProvider>
-      <YourApplication />
-    </GDSReactProvider>
-  );
-}
+```html
+<!DOCTYPE html>
+<html lang="en" class="govuk-template govuk-template--rebranded">
+  <head>...</head>
+  <body class="govuk-template__body js-enabled govuk-frontend-supported">
+    <!-- Your React app -->
+  </body>
+</html>
 ```
+
+**Required classes:**
+- `govuk-template` and `govuk-template--rebranded` on `<html>` - Base template styles and refreshed GOV.UK branding (v5.10.0+)
+- `govuk-template__body` on `<body>` - Body template styles
+- `js-enabled` on `<body>` - Required for JS-dependent components (Accordion, Tabs, etc.)
+- `govuk-frontend-supported` on `<body>` - Indicates modern JavaScript support
 
 If you are approved to use GOV.UK assets, follow [this guide](https://frontend.design-system.service.gov.uk/import-font-and-images-assets/) to set up font and image assets.
 
@@ -90,6 +94,8 @@ import NextLink from "next/link";
   )}
 />
 ```
+
+See the [Router Integration guide](https://projectsbyif.github.io/gds-react/?path=/docs/guides-router-integration--docs) for more examples with different frameworks.
 
 ## GDS Transport Font Usage
 

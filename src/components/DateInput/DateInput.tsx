@@ -1,6 +1,5 @@
 import type { ReactNode } from 'react'
 
-// @ts-ignore: Ignore missing types for govuk-frontend
 import 'govuk-frontend/dist/govuk/components/date-input/_date-input.scss'
 
 export type DateInputOnChangeProps = {

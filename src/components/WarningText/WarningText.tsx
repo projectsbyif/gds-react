@@ -1,6 +1,5 @@
 import type { ReactNode } from 'react'
 
-// @ts-ignore: Ignore missing types for govuk-frontend
 import 'govuk-frontend/dist/govuk/components/warning-text/_warning-text.scss'
 
 export interface WarningTextProps {

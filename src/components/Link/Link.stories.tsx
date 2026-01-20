@@ -1,6 +1,5 @@
 import type { Meta, StoryObj } from "@storybook/react";
 import { Link } from "./Link.js";
-import { GDSReactProvider } from "../GDSReactProvider/GDSReactProvider.js";
 
 const meta: Meta<typeof Link> = {
   title: "Components/Link",
@@ -58,13 +57,6 @@ const meta: Meta<typeof Link> = {
       description: "Render child element with merged props instead of an anchor",
     },
   },
-  decorators: [
-    (Story) => (
-      <GDSReactProvider>
-        <Story />
-      </GDSReactProvider>
-    ),
-  ],
 };
 
 export default meta;

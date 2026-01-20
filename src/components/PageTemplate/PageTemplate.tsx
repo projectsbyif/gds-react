@@ -8,7 +8,6 @@ import { BackLink } from '../BackLink/BackLink.js'
 import { Heading } from '../Heading/Heading.js'
 import { Footer, type FooterProps } from '../Footer/Footer.js'
 
-// @ts-ignore: Ignore missing types for govuk-frontend
 import '../../styles/objects.scss'
 
 export interface PageTemplateProps {

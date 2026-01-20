@@ -1,7 +1,6 @@
 import type { ComponentPropsWithoutRef, ReactNode } from 'react'
 import { Slot } from '@radix-ui/react-slot'
 
-// @ts-ignore: Ignore missing types for govuk-frontend
 import '../../styles/core.scss'
 
 export interface LinkProps extends ComponentPropsWithoutRef<'a'> {

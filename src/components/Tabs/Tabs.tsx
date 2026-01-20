@@ -2,7 +2,6 @@
 
 import { type ReactNode, useEffect, useState } from "react";
 
-// @ts-ignore: Ignore missing types for govuk-frontend
 import "govuk-frontend/dist/govuk/components/tabs/_tabs.scss";
 
 export interface Tab {

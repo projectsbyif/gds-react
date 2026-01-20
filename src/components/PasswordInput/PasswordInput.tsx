@@ -1,6 +1,5 @@
 import { type ReactNode, useEffect, useState } from "react";
 
-// @ts-ignore: Ignore missing types for govuk-frontend
 import "govuk-frontend/dist/govuk/components/password-input/_password-input.scss";
 
 export interface PasswordInputProps {

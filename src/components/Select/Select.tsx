@@ -1,6 +1,5 @@
 import type { ReactNode } from 'react'
 
-// @ts-ignore: Ignore missing types for govuk-frontend
 import 'govuk-frontend/dist/govuk/components/select/_select.scss'
 
 export interface SelectOption {

@@ -1,6 +1,5 @@
 import { useEffect, type ReactNode } from "react";
 
-// @ts-ignore: Ignore missing types for govuk-frontend
 import "govuk-frontend/dist/govuk/components/notification-banner/_notification-banner.scss";
 
 export interface NotificationBannerProps {

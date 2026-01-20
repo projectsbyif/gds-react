@@ -78,3 +78,77 @@ export const Inverse: Story = {
     backgrounds: { value: "dark" },
   },
 };
+
+// Custom router integration stories
+
+/**
+ * Mock router link component that simulates Next.js Link behavior.
+ * The pink dashed outline indicates the custom router is being used.
+ */
+const MockRouterLink = ({
+  href,
+  children,
+  ...props
+}: React.ComponentProps<"a">) => (
+  <a
+    {...props}
+    href={href}
+    style={{ outline: "2px dashed hotpink", outlineOffset: "2px" }}
+    onClick={(e) => {
+      e.preventDefault();
+      console.log("[MockRouter] Navigating to:", href);
+    }}
+  >
+    {children}
+  </a>
+);
+
+export const WithCustomRouter: Story = {
+  args: {
+    items: [
+      { text: "Home", href: "/" },
+      { text: "Passports, travel and living abroad", href: "/passports" },
+      { text: "Travel abroad", href: "/travel" },
+    ],
+    renderLink: (item, className) => (
+      <MockRouterLink href={item.href} className={className}>
+        {item.text}
+      </MockRouterLink>
+    ),
+  },
+  parameters: {
+    docs: {
+      description: {
+        story: `Use the \`renderLink\` prop to integrate with your router.
+
+\`\`\`tsx
+// With Next.js
+import NextLink from 'next/link'
+
+<Breadcrumbs
+  items={items}
+  renderLink={(item, className) => (
+    <NextLink href={item.href} className={className}>
+      {item.text}
+    </NextLink>
+  )}
+/>
+
+// With React Router
+import { Link as RouterLink } from 'react-router-dom'
+
+<Breadcrumbs
+  items={items}
+  renderLink={(item, className) => (
+    <RouterLink to={item.href} className={className}>
+      {item.text}
+    </RouterLink>
+  )}
+/>
+\`\`\`
+
+The pink dashed outline in this example indicates the custom router is being used.`,
+      },
+    },
+  },
+};

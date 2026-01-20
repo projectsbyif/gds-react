@@ -1,6 +1,5 @@
 import { type ReactNode, type JSX, useEffect } from "react";
 
-// @ts-ignore: Ignore missing types for govuk-frontend
 import "govuk-frontend/dist/govuk/components/accordion/_accordion.scss";
 
 export interface AccordionSection {

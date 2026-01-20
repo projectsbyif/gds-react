@@ -1,6 +1,6 @@
-'use client'
-
 import type { ReactNode } from 'react'
+
+import '../../styles/objects.scss'
 
 export interface ButtonGroupProps {
   children: ReactNode

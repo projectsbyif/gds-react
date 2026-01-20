@@ -1,7 +1,6 @@
 import { useEffect, type ReactNode } from "react";
 import { Link } from "../Link/Link.js";
 
-// @ts-ignore: Ignore missing types for govuk-frontend
 import "govuk-frontend/dist/govuk/components/skip-link/_skip-link.scss";
 
 export interface SkipLinkProps {

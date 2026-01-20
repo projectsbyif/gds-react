@@ -4,7 +4,6 @@ import type { ReactNode } from "react";
 import { useEffect, useState } from "react";
 import { Link } from "../Link/Link.js";
 
-// @ts-ignore: Ignore missing types for govuk-frontend
 import "govuk-frontend/dist/govuk/components/service-navigation/_service-navigation.scss";
 
 export interface ServiceNavigationItem {

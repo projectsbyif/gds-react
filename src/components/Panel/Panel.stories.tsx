@@ -23,11 +23,6 @@ const meta: Meta<typeof Panel> = {
     children: {
       description: "The panel body content",
     },
-    headingLevel: {
-      control: "radio",
-      options: [1, 2, 3, 4, 5, 6],
-      description: "The heading level for the title",
-    },
     className: {
       control: "text",
       description: "Additional CSS classes",

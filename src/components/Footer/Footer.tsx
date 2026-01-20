@@ -1,7 +1,6 @@
 import type { ReactNode } from 'react'
 import { Link } from "../Link/Link.js"
 
-// @ts-ignore: Ignore missing types for govuk-frontend
 import 'govuk-frontend/dist/govuk/components/footer/_footer.scss'
 
 export interface FooterLink {

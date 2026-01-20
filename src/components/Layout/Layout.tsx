@@ -1,6 +1,5 @@
 import type { ReactNode, HTMLAttributes } from 'react'
 
-// @ts-ignore: Ignore missing types for govuk-frontend
 import '../../styles/objects.scss'
 
 export type ColumnWidth =

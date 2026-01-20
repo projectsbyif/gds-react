@@ -58,3 +58,60 @@ export const Inverse: Story = {
     backgrounds: { value: "dark" },
   },
 };
+
+// Custom router integration stories
+
+/**
+ * Mock router link component that simulates Next.js Link behavior.
+ * The pink dashed outline indicates the custom router is being used.
+ */
+const MockRouterLink = ({
+  href,
+  children,
+  ...props
+}: React.ComponentProps<"a">) => (
+  <a
+    {...props}
+    href={href}
+    style={{ outline: "2px dashed hotpink", outlineOffset: "2px" }}
+    onClick={(e) => {
+      e.preventDefault();
+      console.log("[MockRouter] Navigating to:", href);
+    }}
+  >
+    {children}
+  </a>
+);
+
+export const WithCustomRouter: Story = {
+  args: {
+    href: "/previous-page",
+    asChild: true,
+    children: <MockRouterLink>Back</MockRouterLink>,
+  },
+  parameters: {
+    docs: {
+      description: {
+        story: `Use the \`asChild\` prop to integrate with your router.
+
+\`\`\`tsx
+// With Next.js
+import NextLink from 'next/link'
+
+<BackLink href="/previous-page" asChild>
+  <NextLink href="/previous-page">Back</NextLink>
+</BackLink>
+
+// With React Router
+import { Link as RouterLink } from 'react-router-dom'
+
+<BackLink href="/previous-page" asChild>
+  <RouterLink to="/previous-page">Back</RouterLink>
+</BackLink>
+\`\`\`
+
+The pink dashed outline in this example indicates the custom router is being used.`,
+      },
+    },
+  },
+};

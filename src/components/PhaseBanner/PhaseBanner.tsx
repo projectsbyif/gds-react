@@ -1,6 +1,5 @@
 import type { ReactNode } from 'react'
 
-// @ts-ignore: Ignore missing types for govuk-frontend
 import 'govuk-frontend/dist/govuk/components/phase-banner/_phase-banner.scss'
 
 export interface PhaseBannerProps {

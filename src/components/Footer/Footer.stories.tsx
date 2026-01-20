@@ -142,3 +142,118 @@ export const Full: Story = {
     },
   },
 };
+
+// Custom router integration stories
+
+/**
+ * Mock router link component that simulates Next.js Link behavior.
+ * The pink dashed outline indicates the custom router is being used.
+ */
+const MockRouterLink = ({
+  href,
+  children,
+  ...props
+}: React.ComponentProps<"a">) => (
+  <a
+    {...props}
+    href={href}
+    style={{ outline: "2px dashed hotpink", outlineOffset: "2px" }}
+    onClick={(e) => {
+      e.preventDefault();
+      console.log("[MockRouter] Navigating to:", href);
+    }}
+  >
+    {children}
+  </a>
+);
+
+export const WithCustomRouter: Story = {
+  args: {
+    navigation: [
+      {
+        title: "Services and information",
+        width: "two-thirds",
+        columns: 2,
+        items: [
+          { text: "Benefits", href: "/benefits" },
+          { text: "Business and self-employed", href: "/business" },
+          { text: "Education and learning", href: "/education" },
+          { text: "Driving and transport", href: "/driving" },
+        ],
+      },
+      {
+        title: "Departments",
+        width: "one-third",
+        items: [
+          { text: "How government works", href: "/government" },
+          { text: "Departments", href: "/departments" },
+        ],
+      },
+    ],
+    meta: {
+      items: [
+        { text: "Help", href: "/help" },
+        { text: "Cookies", href: "/cookies" },
+        { text: "Contact", href: "/contact" },
+      ],
+      visuallyHiddenTitle: "Support links",
+    },
+    renderNavLink: (item, className) => (
+      <MockRouterLink href={item.href} className={className}>
+        {item.text}
+      </MockRouterLink>
+    ),
+    renderMetaLink: (item, className) => (
+      <MockRouterLink href={item.href} className={className}>
+        {item.text}
+      </MockRouterLink>
+    ),
+  },
+  parameters: {
+    docs: {
+      description: {
+        story: `Use the \`renderNavLink\` prop for navigation section links and \`renderMetaLink\` prop for meta links to integrate with your router.
+
+\`\`\`tsx
+// With Next.js
+import NextLink from 'next/link'
+
+<Footer
+  navigation={navigation}
+  meta={meta}
+  renderNavLink={(item, className) => (
+    <NextLink href={item.href} className={className}>
+      {item.text}
+    </NextLink>
+  )}
+  renderMetaLink={(item, className) => (
+    <NextLink href={item.href} className={className}>
+      {item.text}
+    </NextLink>
+  )}
+/>
+
+// With React Router
+import { Link as RouterLink } from 'react-router-dom'
+
+<Footer
+  navigation={navigation}
+  meta={meta}
+  renderNavLink={(item, className) => (
+    <RouterLink to={item.href} className={className}>
+      {item.text}
+    </RouterLink>
+  )}
+  renderMetaLink={(item, className) => (
+    <RouterLink to={item.href} className={className}>
+      {item.text}
+    </RouterLink>
+  )}
+/>
+\`\`\`
+
+The pink dashed outline in this example indicates the custom router is being used.`,
+      },
+    },
+  },
+};

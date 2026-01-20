@@ -1,4 +1,3 @@
-// @ts-ignore: Ignore missing types for govuk-frontend
 import '../../styles/objects.scss'
 
 export interface SectionBreakProps {

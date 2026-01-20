@@ -1,4 +1,3 @@
-// @ts-ignore: Ignore missing types for govuk-frontend
 import "govuk-frontend/dist/govuk/components/exit-this-page/_exit-this-page.scss";
 import { useEffect } from "react";
 

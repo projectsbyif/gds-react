@@ -1,6 +1,5 @@
 import { useEffect, type ReactNode } from "react";
 
-// @ts-ignore: Ignore missing types for govuk-frontend
 import "govuk-frontend/dist/govuk/components/checkboxes/_checkboxes.scss";
 
 export interface CheckboxOption {

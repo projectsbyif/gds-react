@@ -1,7 +1,6 @@
 import type { ReactNode, JSX } from 'react'
 import { Link } from '../Link/Link.js'
 
-// @ts-ignore: Ignore missing types for govuk-frontend
 import 'govuk-frontend/dist/govuk/components/cookie-banner/_cookie-banner.scss'
 
 export interface CookieBannerAction {

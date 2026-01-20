@@ -1,9 +1,7 @@
 import { useEffect, type ReactNode } from "react";
 import { Link } from "../Link/Link.js";
 
-// @ts-ignore: Ignore missing types for govuk-frontend
 import "../../styles/objects.scss";
-// @ts-ignore: Ignore missing types for govuk-frontend
 import "govuk-frontend/dist/govuk/components/header/_header.scss";
 
 export interface HeaderProps {
