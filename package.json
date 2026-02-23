@@ -1,6 +1,6 @@
 {
   "name": "@projectsbyif/gds-react",
-  "version": "2.0.0",
+  "version": "2.0.1",
   "description": "React components for GOV.UK Design System",
   "repository": {
     "type": "git",
@@ -9,7 +9,7 @@
   "publishConfig": {
     "access": "public"
   },
-  "main": "dist/index.js",
+  "main": "dist/index.cjs",
   "scripts": {
     "test": "vitest",
     "storybook": "storybook dev -p 6006",
@@ -25,8 +25,15 @@
   "license": "ISC",
   "packageManager": "pnpm@10.27.0",
   "type": "module",
-  "module": "dist/index.mjs",
+  "module": "dist/index.js",
   "types": "dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js",
+      "require": "./dist/index.cjs"
+    }
+  },
   "files": [
     "dist"
   ],
